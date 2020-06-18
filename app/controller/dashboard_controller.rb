@@ -89,6 +89,7 @@ class Dashboard_controller < Application_Controller
     @employee = Employee.find_by(id:params[:id])
     erb :"/user_page/employee"
     end
+    #test
 
     get '/employees/:id/delete' do 
     authenticate
