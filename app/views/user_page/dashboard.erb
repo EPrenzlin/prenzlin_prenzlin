@@ -1,0 +1,40 @@
+<h1> Internal database <h1>
+<h1> Welcome <%=@user.name.capitalize%> </h1>
+
+<%if @user.admin != true%>
+<a href="/clients">My Clients</a><br>
+
+<a href="/clients/new">Create a new Client</a><br>
+<%end%>
+
+<br> 
+<br>
+
+<form action="/search/title" method="post">
+<select name="title" value="title">
+<option value=""disabled selected>Search by title</option>
+<option value="Managing Director">Managing Director</option>
+<option value="Executive Director"> Executive Director </option>
+<option value="Vice-President"> Vice President </option> 
+<option value="Associate"> Associate </option>
+<option value=" Analyst"> Analyst </option>
+<option value="Intern"> Intern </option>
+</select>
+<input type="submit" value="search"> 
+</form>
+
+<form action="/search/division" method="post">
+<select name ="division" value="division">
+<option value=""disabled selected>Search by division</option>
+<option value="sales">Sales </option>
+<option value="trading">Trading </option>
+<option value="m&a">M&A </option>
+<option value="developer">Developer </option>
+</select>
+<input type="submit" value="search"> <br>
+</form>
+
+
+<%if @user.admin == true%> 
+<a href="employees/all"> List of all Employees</a> <br>
+<%end%>

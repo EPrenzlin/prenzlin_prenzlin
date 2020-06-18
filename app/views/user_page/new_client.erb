@@ -1,0 +1,24 @@
+This makes a new client
+
+<form action="/clients" method="post">
+<input type="text" name="name" placeholder="Name"><br>
+<select name="industry">
+<option value=""disabled selected>Industry</option>
+<option value="Investment Banking">Investment Banking</option>
+<option value="Commercial Banking">Commercial Banking</option>
+<option value="Hedge Fund">Hedge Fund</option>
+<option value="Private Equity">Private Equity</option>
+</select>
+
+<select name="priority">
+<option value=""disabled selected>Priority</option>
+<option value="high"> High</option>
+<option value="medium"> Medium</option>
+<option value="low"> Low</option>
+</select>
+
+
+<%# <input type="text" name="industry" placeholder="Industry"><br>
+<input type="text" name="priority" placeholder="Priority"><br> %>
+<input type="submit" value="Create a new Client">
+</form>
