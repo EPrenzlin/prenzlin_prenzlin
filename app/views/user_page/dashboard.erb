@@ -7,10 +7,9 @@
 <a href="/clients/new">Create a new Client</a><br>
 <%end%>
 
-<br> 
 <br>
 
-<form action="/search/title" method="post">
+<%# <form action="/search/title" method="post">
 <select name="title" value="title">
 <option value=""disabled selected>Search by title</option>
 <option value="Managing Director">Managing Director</option>
@@ -26,6 +25,23 @@
 <form action="/search/division" method="post">
 <select name ="division" value="division">
 <option value=""disabled selected>Search by division</option>
+<option value="sales">Sales </option>
+<option value="trading">Trading </option>
+<option value="m&a">M&A </option>
+<option value="developer">Developer </option>
+</select>
+<input type="submit" value="search"> <br>
+</form> %>
+
+<form action="/search" method="post">
+<select name="search" value="search">
+<option value=""disabled selected>Search by the following</option>
+<option value="Managing Director">Managing Director</option>
+<option value="Executive Director"> Executive Director </option>
+<option value="Vice-President"> Vice President </option> 
+<option value="Associate"> Associate </option>
+<option value="Analyst"> Analyst </option>
+<option value="Intern"> Intern </option>
 <option value="sales">Sales </option>
 <option value="trading">Trading </option>
 <option value="m&a">M&A </option>

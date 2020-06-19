@@ -76,6 +76,30 @@ class Dashboard_controller < Application_Controller
     erb :"user_page/division"
     end
 
+    # post '/search' do 
+    # authenticate   
+    # titles = [] 
+    # Employee.all.each do |a|
+    #     titles << a.title 
+    # end
+    # title = titles.uniq
+    # if title.include?(params[:search])
+    #     @search = Employee.find_by(title:params[:search])
+    # else
+    #     @search = Employee.find_by(division:params[:search])
+    # end
+    # binding.pry
+    # erb :"/user_page/search"
+    # end
+
+    post '/search' do 
+    authenticate
+    @search_title = Employee.find_by(title:params[:search]) 
+    @search_division = Employee.find_by(division:params[:search])
+    @user = @search_title || @search_division
+    erb :"/user_page/search" 
+    end 
+
     get '/employees/all' do 
     authenticate 
     is_admin?
