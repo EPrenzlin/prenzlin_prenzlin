@@ -1,17 +1,14 @@
-This is where all the users clients will be displayed!<br>
-
-
-<% if @user.admin != true %>
-<%@user.clients.all.each do |c|%>
-<a href="client/<%=c.id%>"><%=c.name%></a><br>
-<%end%>
-
-<%else @user.admin == true %>
- <% Client.all.each do |c| %>
-<a href="client/<%=c.id%>"><%=c.name%></a><br>
+<%if @user.title != "Managing Director"%>
+<p><%="You do not have any clients. You are too junior"%></p> 
+<%elsif @user.title == "Managing Director"%>
+<%@user.clients.each do |c|%>
+<p><%=c.name.capitalize%> </p>
+<p><%=c.priority.capitalize%> </p>
+<p><%=c.industry.capitalize%> </p>
+<a href="/client/<%=c.id%>"> Edit this Client details</a>
+<p> -------- </p>
 <%end%>
 <%end%>
-
 
 
 

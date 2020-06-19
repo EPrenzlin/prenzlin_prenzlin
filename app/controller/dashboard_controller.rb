@@ -8,6 +8,7 @@ class Dashboard_controller < Application_Controller
 
     get '/clients/new' do 
     authenticate
+    @user = current_user
     erb :'/user_page/new_client'
     end
 
@@ -64,39 +65,30 @@ class Dashboard_controller < Application_Controller
     redirect '/clients'
     end
 
-    post '/search/title' do 
-    authenticate
-    @titles = Employee.select{|c|c.title == params[:title]}
-    erb :"user_page/title"
-    end
+    # post '/search/title' do 
+    # authenticate
+    # @titles = Employee.select{|c|c.title == params[:title]}
+    # erb :"user_page/title"
+    # end
 
-    post '/search/division' do 
-    authenticate
-    @division = Employee.select{|c|c.division == params[:division]}
-    erb :"user_page/division"
-    end
+    # post '/search/division' do 
+    # authenticate
+    # @division = Employee.select{|c|c.division == params[:division]}
+    # erb :"user_page/division"
+    # end
 
-    # post '/search' do 
-    # authenticate   
-    # titles = [] 
-    # Employee.all.each do |a|
-    #     titles << a.title 
-    # end
-    # title = titles.uniq
-    # if title.include?(params[:search])
-    #     @search = Employee.find_by(title:params[:search])
-    # else
-    #     @search = Employee.find_by(division:params[:search])
-    # end
-    # binding.pry
-    # erb :"/user_page/search"
-    # end
 
     post '/search' do 
     authenticate
-    @search_title = Employee.find_by(title:params[:search]) 
-    @search_division = Employee.find_by(division:params[:search])
-    @user = @search_title || @search_division
+    search_title = Employee.all.select{|a|a.title == params[:search]}
+    search_division = Employee.all.select{|a|a.division == params[:search]}
+    @user = search_title
+    if @user != [] 
+        @user = search_title 
+    else
+        @user = search_division
+    end
+    
     erb :"/user_page/search" 
     end 
 

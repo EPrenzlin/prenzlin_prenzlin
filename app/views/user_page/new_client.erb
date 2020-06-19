@@ -1,5 +1,7 @@
-This makes a new client
-
+<%if @user.title != "Managing Director"%>
+<p> <%="You are not allowed to create new Clients. You are too junior"%></p> 
+<%end%>
+ 
 <form action="/clients" method="post">
 <input type="text" name="name" placeholder="Name"><br>
 <select name="industry">
@@ -17,8 +19,5 @@ This makes a new client
 <option value="low"> Low</option>
 </select>
 
-
-<%# <input type="text" name="industry" placeholder="Industry"><br>
-<input type="text" name="priority" placeholder="Priority"><br> %>
 <input type="submit" value="Create a new Client">
-</form>
+</form> 
