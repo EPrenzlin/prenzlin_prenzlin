@@ -21,9 +21,6 @@ helpers do
     def authenticate
     if logged_in? == true
         true
-    # elsif
-    #      is_admin?
-    #     true 
     else
         redirect '/logout'
     end
